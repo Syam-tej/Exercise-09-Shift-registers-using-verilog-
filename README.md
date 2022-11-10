@@ -41,37 +41,95 @@ FIGURE-04
 A Parallel in Parallel out (PIPO) shift register is used as a temporary storage device and like SISO Shift register it acts as a delay element.
 
 ### Procedure
-/* write all the steps invloved */
+## Step1:
+Create a new Quartus II project.
+
+## Step2:
+Create a new file in the Quartus II where name of the module is name of the project.
+
+## Step3:
+Declare a function for each logical circuit.
+
+## Step4:
+For each definition give end module.
+
+## Step5:
+Run RTL simulation and timing diagram.
 
 
 
-### PROGRAM 
-/*
+### PROGRAM
+```
 Program for  Implementation-of Shift-registers-using-verilog-
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: P SYAM TEJ
+RegisterNumber:212221240056
+``` 
+## SIPO:-
+```
+module sipo(si,clk,po);
+input si,clk;
+output [0:7]po;
+reg [0:7]temp;
+always@(posedge clk)
+begin
+temp = {temp[0:6],si};
+end
+assign po=temp;
+endmodule
+```
+## PISO:-
+```
+module sipo(Clk, Parallel_In,load, Serial_Out);
+input Clk,load;
+input [3:0]Parallel_In;
+output reg Serial_Out;
+reg [3:0]tmp;
+always @(posedge Clk)
+begin
+if(load)
+tmp<=Parallel_In;
+else
+begin
+Serial_Out<=tmp[3];
+tmp<={tmp[2:0],1'b0};
+end
+end
+endmodule
+```
+## PIPO:-
+```
+module sipo(pi,clk,po);
+input clk;
+input[3:0]pi;
+output reg[3:0]po;
+always@(posedge clk)
+begin
+po = pi;
+end 
+endmodule
+```
+### RTL LOGIC  REGISTERS  
+## SIPO
+![sipo1](https://user-images.githubusercontent.com/93427224/201098405-bdd11def-5d38-425a-8a84-a280e48fad64.png)
 
+## PISO
+![piso1](https://user-images.githubusercontent.com/93427224/201098461-dc2615d8-a181-41ed-9e92-644189a6a3e5.png)
 
-
-
-
-
-### RTL LOGIC  REGISTERS   
-
-
-
-
-
-
-
+## PIPO
+![pipo1](https://user-images.githubusercontent.com/93427224/201098521-6e88ba9b-f3d1-4768-8419-bbda91c0d9e5.png)
 
 
 ### TIMING DIGRAMS FOR SHIFT REGISTERS
+## SIPO
+![sipo2](https://user-images.githubusercontent.com/93427224/201098593-d7777c1c-8e50-4079-b366-dcc1ed0f2fae.png)
 
+## PISO
 
+![piso2](https://user-images.githubusercontent.com/93427224/201098677-bedc99c7-2d03-4441-b4fa-5f01ec055330.png)
 
+## PIPO
 
+![PIPO2](https://user-images.githubusercontent.com/93427224/201099272-2de30acf-295e-4703-a7be-fb48d057d9c3.png)
 
 
 
