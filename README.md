@@ -135,3 +135,4 @@ endmodule
 
 
 ### RESULTS 
+Therefore PISO,PIPO,PISO are implemented succesfully using verilog and validated their functionality using their functional tables.
